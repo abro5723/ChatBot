@@ -30,7 +30,7 @@ public class Chatbot
 		 * Me gusta
 		 * What if I told you
 		 * troll
-		 * Unhelpful highschool teacher
+		 * Unhelpful high school teacher
 		 * Cute animals
 		 * Y u no?
 		 */
@@ -41,6 +41,7 @@ public class Chatbot
 		buildMemesList();
 		buildPoliticalTopicsList();
 	}
+	
 	
 	private void buildMemesList()
 	{
@@ -58,9 +59,21 @@ public class Chatbot
 	
 	private void buildPoliticalTopicsList()
 	{
-		this.politicalTopicList.add("Stormcloak");
-		this.politicalTopicList.add("Thalmor");
-		this.politicalTopicList.add("Imperial");
+		this.politicalTopicList.add("election");
+		this.politicalTopicList.add("Trump");
+		this.politicalTopicList.add("Clinton");
+		this.politicalTopicList.add("democrat");
+		this.politicalTopicList.add("republican");
+		this.politicalTopicList.add("liberal");
+		this.politicalTopicList.add("conservative");
+		this.politicalTopicList.add("Biden");
+		this.politicalTopicList.add("Carson");
+		this.politicalTopicList.add("Rubio");
+		this.politicalTopicList.add("Fiorina");
+		this.politicalTopicList.add("Sanders");
+		this.politicalTopicList.add("vote");
+		this.politicalTopicList.add("11/8/2016");
+		
 	}
 	
 	/**
@@ -110,7 +123,16 @@ public class Chatbot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean hasPoliticalTopic = false;
+		
+		for(String currentPoliticalTopic: politicalTopicList)
+		{
+			if(currentPoliticalTopic.contains(currentInput))
+			{
+				hasPoliticalTopic = true;
+			}
+		}
+		return hasPoliticalTopic;
 	}
 	
 	
@@ -123,6 +145,7 @@ public class Chatbot
 	{
 		boolean hasMeme = false;
 		
+		
 		for(String currentMeme: memesList)
 		{
 			if(currentMeme.contains(currentInput))
@@ -133,6 +156,47 @@ public class Chatbot
 
 		
 		return hasMeme;
+	}
+	
+	public String processConversation(String currentInput)
+	{
+		String nextConversation = "";
+		int randomTopic = (int) (Math.random() * 5);
+		
+		switch (randomTopic)
+		{
+		case 0 :
+			if(memeChecker(currentInput))
+			{
+				nextConversation = "That is a very popular meme this year. Whar else are you wanting to talk about?"; 
+			}
+			break;
+		case 1:
+			if(politicalTopicChecker(currentInput))
+			{
+				nextConversation = "Hmm, that's a very odd topic. Any other thoughts?";
+			}
+			break;
+		case 2:
+			if(contentChecker(currentInput))
+			{
+				nextConversation ="Alright. Have you anything else to say?";
+			}
+			break;
+		case 3:
+			if(currentInput.length() > 20)
+			{
+				nextConversation = "Not much of a talker are you?";
+			}
+			break;
+		case 4:
+			if(currentInput.length() < 20)
+			{
+				nextConversation = "Wow, you don't really elaborate do you?";
+			}
+		
+		}
+		return nextConversation;
 	}
 	
 	/**
