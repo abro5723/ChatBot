@@ -38,13 +38,18 @@ public class chatController
 			 {
 				 myDisplay.showResponse("The dankest of memes.");
 			 }
-	
-			 conversation = myDisplay.grabAnswer(conversation);
+			 else if(myBot.politicalTopicChecker(conversation))
+			 {
+				 myDisplay.showResponse("What a topic!");
+			 }
+			 
+			 //conversation = myBot.processConversation(conversation);
+			 conversation = myDisplay.grabAnswer(myBot.processConversation(conversation));
 		 }
 	}
 	private void shutDown()
 	{
-		 
+		// myDisplay.showResponse("Goodbye, " + myBot.getUsername + );
 	}
 }
 
