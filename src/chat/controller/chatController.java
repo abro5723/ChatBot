@@ -40,7 +40,7 @@ public class chatController
 			 }
 			 else if(myBot.politicalTopicChecker(conversation))
 			 {
-				 myDisplay.showResponse("What a topic!");
+				 myDisplay.showResponse("Please I've no care for your petty politics mortal!");
 			 }
 			 
 			 //conversation = myBot.processConversation(conversation);
