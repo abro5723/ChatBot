@@ -10,7 +10,7 @@ public class ChatView
 	
 	public ChatView()
 	{
-		windowMessage = "Hello Mortal!";
+		windowMessage = "DragonBot";
 		chatIcon = new ImageIcon(getClass().getResource("images/dragon-021.png"));
 	}
 	public void showResponse(String wordsFromSomewhere)
