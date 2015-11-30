@@ -5,10 +5,10 @@ import chat.controller.*;
 
 public class ChatFrame extends JFrame
 {
-	private chatController baseController;
+	private ChatController baseController;
 	private ChatPanel basePanel;
 	
-	public ChatFrame(chatController baseController)
+	public ChatFrame(ChatController baseController)
 	{
 		this.baseController = baseController;
 		basePanel = new ChatPanel(baseController);
@@ -24,7 +24,7 @@ public class ChatFrame extends JFrame
 		this.setVisible(true);
 	}
 	
-	public chatController getBaseController()
+	public ChatController getBaseController()
 	{
 		return baseController;
 	}

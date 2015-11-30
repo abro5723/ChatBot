@@ -5,8 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import chat.view.*;
 import chat.controller.ChatController;
+
 import java.awt.Component;
 import java.awt.event.ActionListener;
 
@@ -19,7 +21,7 @@ public class ChatPanelTest
 	@Before
 	public void setUp() throws Exception
 	{
-		basePanel = new ChatPanel(new chatController());
+		basePanel = new ChatPanel(new ChatController());
 	}
 
 	@After
@@ -38,7 +40,7 @@ public class ChatPanelTest
 	@Test
 	public void testSetupPanel()
 	{
-		assertTrue("Tip/Hint not set", basePanel.getTextField().getToolTipText().length() > 4);
+		assertTrue("Tip/Hint not set", basePanel.getChatText().getToolTipText().length() > 4);
 		assertTrue("Incorrect layout manager", basePanel.getLayout() instanceof javax.swing.SpringLayout);
 		assertTrue("Minimum number of components not met", basePanel.getComponents().length >= 4);
 	}

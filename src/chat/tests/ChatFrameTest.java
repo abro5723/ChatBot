@@ -11,12 +11,12 @@ import chat.controller.*;
 public class ChatFrameTest
 {
 	private ChatFrame baseFrame;
-	private chatController baseController;
+	private ChatController baseController;
 
 	@Before
 	public void setUp() throws Exception
 	{
-		baseController = new chatController();
+		baseController = new ChatController();
 		baseFrame = new ChatFrame(baseController);
 	}
 

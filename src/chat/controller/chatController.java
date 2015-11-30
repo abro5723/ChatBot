@@ -8,18 +8,42 @@ import chat.view.*;
  * @author abro5723
  * @version 1.0 10/21/15
  */
-public class chatController 
+public class ChatController 
 {
 	private ChatView myDisplay;
 	private Chatbot myBot;
 	private ChatFrame baseFrame;
 	
-	public chatController()
+	public ChatController()
 	{
 		myDisplay = new ChatView();
 		String userName = myDisplay.grabAnswer("What is your name?");
 		myBot = new Chatbot(userName);
 		baseFrame = new ChatFrame(this);
+	}
+	public ChatView getMyDisplay()
+	{
+		return myDisplay;
+	}
+	public void setMyDisplay(ChatView myDisplay)
+	{
+		this.myDisplay = myDisplay;
+	}
+	public Chatbot getMyBot()
+	{
+		return myBot;
+	}
+	public void setMyBot(Chatbot myBot)
+	{
+		this.myBot = myBot;
+	}
+	public ChatFrame getBaseFrame()
+	{
+		return baseFrame;
+	}
+	public void setBaseFrame(ChatFrame baseFrame)
+	{
+		this.baseFrame = baseFrame;
 	}
 	public void start()
 	{

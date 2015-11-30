@@ -8,7 +8,7 @@ public class ChatRunner
 {
 	public static void main(String [] args)
 	{
-		chatController myChatController = new chatController();
+		ChatController myChatController = new ChatController();
 		myChatController.start();
 	}
 
