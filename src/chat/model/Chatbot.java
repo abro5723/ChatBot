@@ -1,6 +1,7 @@
 package chat.model;
 
 import java.util.ArrayList;
+import chat.controller.*;
 
 /**
  * 
@@ -36,7 +37,7 @@ public class Chatbot
 		 */
 		this.politicalTopicList = new ArrayList<String>();
 		this.userName = userName;
-		this.content = "Motivational Sign!";
+		this.content = "content";
 		
 		buildMemesList();
 		buildPoliticalTopicsList();
@@ -82,16 +83,35 @@ public class Chatbot
 	 * @param currentInput
 	 * @return A true or false based on the length of the supplied String.
 	 */
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean hasMash = false;
+		
+		if(currentInput.equals("dasgds") || currentInput.equals("asdf") || currentInput.equals("jkl;"))
+		{
+			hasMash = true;
+		}
+		else
+		{}
+		
+		return hasMash;
+	}
+	
+	public boolean quitChecker(String currentInput)
+	{
+		boolean hasQuit = false;
+		
+		if(currentInput.equals("quit"))
+		{
+			hasQuit = true;
+		}
+		
+		return hasQuit;
+	}
 	public boolean lengthChecker(String currentInput)
 	{
 		boolean hasLength = false;
-		if(currentInput == null)
-		{
-			if(currentInput.length() >= 1)
-			{
-				hasLength = true;
-			}
-		}
 		
 		if(currentInput != null && currentInput.length() > 0)
 		{
@@ -223,7 +243,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getMemesList()
 	{
-		return null;
+		return memesList;
 	}
 	
 	/**
@@ -232,7 +252,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getPoliticalTopicList()
 	{
-		return null;
+		return politicalTopicList;
 	}
 	
 	/**
@@ -241,6 +261,7 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
-		
+		content= "Motivational sign";
+		this.content = content;
 	}
 }

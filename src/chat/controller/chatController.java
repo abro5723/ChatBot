@@ -54,29 +54,50 @@ public class ChatController
 	private void chat()
 	{
 		 String conversation = myDisplay.grabAnswer("What would you like to talk about today?");
-		 while(myBot.lengthChecker(conversation))
-		 {
-			 if(myBot.contentChecker(conversation))
-			 {
-				 myDisplay.showResponse("wow, I had no idea you are interested in " + myBot.getContent());
-			 }
-			 else if(myBot.memeChecker(conversation))
-			 {
-				 myDisplay.showResponse("The dankest of memes.");
-			 }
-			 else if(myBot.politicalTopicChecker(conversation))
-			 {
-				 myDisplay.showResponse("Please I've no care for your petty politics mortal!");
-			 }
+		// while(myBot.lengthChecker(conversation))
+		 //{
+			 //if(myBot.contentChecker(conversation))
+			 //{
+				 //myDisplay.showResponse("wow, I had no idea you are interested in " + myBot.getContent());
+			 //}
+			 //else if(myBot.memeChecker(conversation))
+			 //{
+				 //myDisplay.showResponse("The dankest of memes.");
+			 //}
+			 //else if(myBot.politicalTopicChecker(conversation))
+			 //{
+				 //myDisplay.showResponse("Please I've no care for your petty politics mortal!");
+			// }
+			 //else if(myBot.keyboardMashChecker(conversation))
+			 //{
+				// myDisplay.showResponse("Well, you seem to be bored now.");
+			 //}
 			 
 			 //conversation = myBot.processConversation(conversation);
-			 conversation = myDisplay.grabAnswer(myBot.processConversation(conversation));
-		 }
+			 //conversation = myDisplay.grabAnswer(myBot.processConversation(conversation));
+			 //}
 	}
-	private void shutDown()
+	
+	public String userToChatbot(String conversation)
 	{
-		// myDisplay.showResponse("Goodbye, " + myBot.getUsername + );
+		String response = "";
+		if(myBot.quitChecker(conversation))
+		{
+			shutDown();
+		}
+		
+		response = myBot.processConversation(conversation);
+		
+		return response;
+		
 	}
+	
+	public void shutDown()
+	{
+		myDisplay.showResponse("Goodbye, " + myBot.getUserName() + " I'll devour your corpse");
+		System.exit(0);
+	}
+	
 }
 
 	
