@@ -1,5 +1,11 @@
 package chat.view;
+/**
+ * @author Ashton Brown
+ * @version: 1.0 11/27/2016
+ * A chatbot that is not unlike ones that someone may find online; however, it is not as diverse.
+ */
 
+// imports required for certain functionality of aspects within the panel class
 import java.awt.Color;
 import java.awt.event.*;
 import java.awt.color.*;
@@ -10,26 +16,23 @@ import chat.controller.ChatController;
 
 public class ChatPanel extends JPanel
 {
+	//creation of instances needed for required compilation
 	private ChatController baseController;
 	private JButton chatButton;
 	private JTextField chatText;
 	private SpringLayout baseLayout;
 	private JTextArea chatArea;
 	
+	
 	public ChatPanel(ChatController baseController)
 	{
+		//association of instances to new names/variables
 		this.baseController = baseController;
-		
 		baseLayout = new SpringLayout();
 		chatButton = new JButton("Start the convo!");
-		
 		chatText = new JTextField("Type yo wurds mayn!");
-		
-		
 		chatArea = new JTextArea(10, 40);
-		
 		chatArea.setEnabled(false);
-		
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -38,6 +41,7 @@ public class ChatPanel extends JPanel
 	
 	private void setupListeners()
 	{
+		//Setup of the button to input info to the chatbot
 		chatButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -55,25 +59,32 @@ public class ChatPanel extends JPanel
 
 	private void setupPanel()
 	{
+		//adds all needed components to the panel
 		this.add(chatButton);
 		this.add(chatText);
 		this.setLayout(baseLayout);
 		this.setBackground(Color.BLUE);
 		this.add(chatArea);
-		chatText.setToolTipText("Typhere for the chatbot.");
+		chatText.setToolTipText("Type here for the chatbot.");
 		chatArea.setEnabled(false);
 	}
 	
 	private void setupLayout()
 	{
-		baseLayout.putConstraint(SpringLayout.WEST, chatButton, 10, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.SOUTH, chatButton, -10, SpringLayout.SOUTH, this);
+		//placing of constraints on the GUI components
+		baseLayout.putConstraint(SpringLayout.NORTH, chatText, 6, SpringLayout.SOUTH, chatArea);
+		baseLayout.putConstraint(SpringLayout.EAST, chatArea, -10, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, chatButton, 6, SpringLayout.SOUTH, chatText);
+		baseLayout.putConstraint(SpringLayout.EAST, chatButton, 0, SpringLayout.EAST, chatText);
+		baseLayout.putConstraint(SpringLayout.WEST, chatText, 150, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, chatArea, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, chatArea, 10, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.WEST, chatText, 0, SpringLayout.WEST, chatButton);
-		baseLayout.putConstraint(SpringLayout.SOUTH, chatText, -6, SpringLayout.NORTH, chatButton);
 	}
 	
+	/**
+	 * getters and setters for the different variables
+	 * @return
+	 */
 	public ChatController getBaseController()
 	{
 		return baseController;

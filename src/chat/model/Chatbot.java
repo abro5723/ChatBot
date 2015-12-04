@@ -46,6 +46,7 @@ public class Chatbot
 	
 	private void buildMemesList()
 	{
+		//Creation of a memes list to deal with all meme related things
 		this.memesList.add("Me gusta");
 		this.memesList.add("Rare Pepe");
 		this.memesList.add("Doge");
@@ -60,11 +61,12 @@ public class Chatbot
 	
 	private void buildPoliticalTopicsList()
 	{
+		//Creation of a Politics list to deal with all political things
 		this.politicalTopicList.add("election");
 		this.politicalTopicList.add("Trump");
 		this.politicalTopicList.add("Clinton");
-		this.politicalTopicList.add("democrat");
-		this.politicalTopicList.add("republican");
+		this.politicalTopicList.add("Democrat");
+		this.politicalTopicList.add("Republican");
 		this.politicalTopicList.add("liberal");
 		this.politicalTopicList.add("conservative");
 		this.politicalTopicList.add("Biden");
@@ -73,7 +75,7 @@ public class Chatbot
 		this.politicalTopicList.add("Fiorina");
 		this.politicalTopicList.add("Sanders");
 		this.politicalTopicList.add("vote");
-		this.politicalTopicList.add("11/8/2016");
+		this.politicalTopicList.add("11/4/16");
 		
 	}
 	
@@ -97,7 +99,11 @@ public class Chatbot
 		
 		return hasMash;
 	}
-	
+	/**
+	 * Checks as to whether or not the user wishes to stop talking
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean quitChecker(String currentInput)
 	{
 		boolean hasQuit = false;
@@ -109,6 +115,11 @@ public class Chatbot
 		
 		return hasQuit;
 	}
+	/**
+	 * checks the length of the users input so that it can articulate a response
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean lengthChecker(String currentInput)
 	{
 		boolean hasLength = false;
@@ -177,7 +188,11 @@ public class Chatbot
 		
 		return hasMeme;
 	}
-	
+	/**
+	 * Process' the conversation with Switch cases so that it can alter it's answer
+	 * @param currentInput
+	 * @return
+	 */
 	public String processConversation(String currentInput)
 	{
 		String nextConversation = "";
@@ -261,7 +276,7 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
-		content= "Motivational sign";
+		content = "Motivational sign";
 		this.content = content;
 	}
 }

@@ -21,6 +21,10 @@ public class ChatController
 		myBot = new Chatbot(userName);
 		baseFrame = new ChatFrame(this);
 	}
+	/**
+	 * getters and setters for all chatController variables
+	 * @return
+	 */
 	public ChatView getMyDisplay()
 	{
 		return myDisplay;
@@ -54,7 +58,7 @@ public class ChatController
 	private void chat()
 	{
 		 String conversation = myDisplay.grabAnswer("What would you like to talk about today?");
-		// while(myBot.lengthChecker(conversation))
+	 //while(myBot.lengthChecker(conversation))
 		 //{
 			 //if(myBot.contentChecker(conversation))
 			 //{

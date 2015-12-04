@@ -83,8 +83,8 @@ public class ChatbotTest
 	@Test
 	public void testMemeChecker()
 	{
-		assertTrue("Topic check", myBot.getMemesList().contains("doge"));
-		assertTrue("Topic check", myBot.getMemesList().contains("cute animals"));
+		assertTrue("Topic check", myBot.getMemesList().contains("Doge"));
+		assertTrue("Topic check", myBot.getMemesList().contains("Cute animals"));
 	}
 	
 	@Test
@@ -98,8 +98,8 @@ public class ChatbotTest
 	public void testBuildMemesList()
 	{
 		assertTrue("Size check", myBot.getMemesList().size() >= 10);
-		assertTrue("Topic check", myBot.getMemesList().contains("doge"));
-		assertTrue("Topic check", myBot.getMemesList().contains("cute animals"));
+		assertTrue("Topic check", myBot.getMemesList().contains("Doge"));
+		assertTrue("Topic check", myBot.getMemesList().contains("Cute animals"));
 	}
 	
 	@Test
@@ -120,7 +120,7 @@ public class ChatbotTest
 	@Test
 	public void testGetContent()
 	{
-		String content = "topic area of interest";
+		String content = "Motivational sign";
 		myBot.setContent(content);
 		assertSame("Setters and Getters work", content, myBot.getContent());
 	}
