@@ -22,6 +22,11 @@ public class ChatPanel extends JPanel
 	private JTextField chatText;
 	private SpringLayout baseLayout;
 	private JTextArea chatArea;
+	private JLabel promptLabel;
+	private JScrollPane textPane;
+	private JButton tweetButton;
+	private JButton saveButton;
+	private JButton loadButton;
 	
 	
 	public ChatPanel(ChatController baseController)
@@ -33,6 +38,7 @@ public class ChatPanel extends JPanel
 		chatText = new JTextField("Type yo wurds mayn!");
 		chatArea = new JTextArea(10, 40);
 		chatArea.setEnabled(false);
+		
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -60,15 +66,26 @@ public class ChatPanel extends JPanel
 	private void setupPanel()
 	{
 		//adds all needed components to the panel
-		this.add(chatButton);
+		this.add(chatButton);		
+		this.setLayout(baseLayout);
 		this.add(chatText);
 		this.setLayout(baseLayout);
 		this.setBackground(Color.BLUE);
-		this.add(chatArea);
 		chatText.setToolTipText("Type here for the chatbot.");
 		chatArea.setEnabled(false);
+		//this.add(testButton);
+		this.add(textPane);
 	}
 	
+	private void setupChatPane()
+	{
+		chatArea.setLineWrap(true);
+		chatArea.setWrapStyleWord(true);
+		chatArea.setEditable(false);
+		textPane = new JScrollPane(chatArea);
+		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	}
 	private void setupLayout()
 	{
 		//placing of constraints on the GUI components
@@ -79,6 +96,8 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, chatText, 150, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, chatArea, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, chatArea, 10, SpringLayout.WEST, this);
+		
+
 	}
 	
 	/**

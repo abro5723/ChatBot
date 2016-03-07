@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import chat.controller.*;
 
 /**
- * 
+ * All checkers for certain conversation topics are declared in this area
  * @author abro5723
  * @version 1.0 10/21/15
  */
