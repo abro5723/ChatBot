@@ -1,6 +1,7 @@
 package chat.controller;
 
 import chat.model.Chatbot;
+import chat.model.CtecTwitter;
 import chat.view.*;
 
 /**
@@ -10,6 +11,7 @@ import chat.view.*;
  */
 public class ChatController 
 {
+	private CtecTwitter chatTwitter;
 	private ChatView myDisplay;
 	private Chatbot myBot;
 	private ChatFrame baseFrame;
@@ -20,6 +22,7 @@ public class ChatController
 		String userName = myDisplay.grabAnswer("What is your name?");
 		myBot = new Chatbot(userName);
 		baseFrame = new ChatFrame(this);
+		chatTwitter = new CtecTwitter(this);
 	}
 	/**
 	 * getters and setters for all chatController variables
@@ -100,6 +103,15 @@ public class ChatController
 	{
 		myDisplay.showResponse("Goodbye, " + myBot.getUserName() + " I'll devour your corpse");
 		System.exit(0);
+	}
+	
+	public void sendTweet(String tweetText)
+	{
+		chatTwitter.sendTweet(tweetText);
+	}
+	public void handleErrors(String errorMessage)
+	{
+		myDisplay.showResponse(errorMessage);
 	}
 	
 }
