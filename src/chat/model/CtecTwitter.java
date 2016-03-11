@@ -33,6 +33,11 @@ public class CtecTwitter
 			baseController.handleErrors(error.getErrorMessage());
 		}
 	}
+	
+	public void loadTweets(String witterHandle) throws TwitterException
+	{
+		
+	}
 //	public String topResults(List<String> wordList)
 //	{
 //		

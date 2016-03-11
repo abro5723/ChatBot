@@ -113,7 +113,7 @@ public class ChatController
 	{
 		myDisplay.showResponse(errorMessage);
 	}
-	public String analyse(String userName)
+	public String analyze(String userName)
 	{
 		String userAnalysis = "User " + userName + "has ";
 		

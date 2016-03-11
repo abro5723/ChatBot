@@ -40,13 +40,14 @@ public class ChatPanel extends JPanel
 		baseLayout = new SpringLayout();
 		chatButton = new JButton("Start the convo!");
 		chatText = new JTextField("Type yo wurds mayn!");
-		chatArea = new JTextArea(10, 40);
-		chatArea.setEnabled(false);
-		tweetButton = new JButton("Send a tweet");
-		analyzeTwitterButton = new JButton("Count dem Tweets");
 		
+		tweetButton = new JButton("Send a tweet");
+
+		analyzeTwitterButton = new JButton("Count dem Tweets");
 
 		
+
+		setupChatPane();
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -62,10 +63,14 @@ public class ChatPanel extends JPanel
 		this.setLayout(baseLayout);
 		this.setBackground(Color.BLUE);
 		chatText.setToolTipText("Type here for the chatbot.");
-		chatArea.setEnabled(false);
 		this.add(analyzeTwitterButton);
 		//this.add(testButton);
 		this.add(textPane);
+		chatArea = new JTextArea(10, 40);
+
+		add(chatArea);
+		chatArea.setEnabled(false);
+		chatArea.setEnabled(false);
 		//this.add
 	}
 	
@@ -112,28 +117,32 @@ public class ChatPanel extends JPanel
 	
 	private void setupChatPane()
 	{
-		textPane = new JScrollPane(chatArea);
+		textPane = new JScrollPane();
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
 		chatArea.setEditable(false);
-		this.setPreferredSize(new Dimension(500, 500));
-		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		this.setPreferredSize(new Dimension(487, 500));
+		
 	}
 	private void setupLayout()
 	{
-		//placing of constraints on the GUI components
-		baseLayout.putConstraint(SpringLayout.NORTH, analyzeTwitterButton, 2, SpringLayout.SOUTH, tweetButton);
-		baseLayout.putConstraint(SpringLayout.EAST, analyzeTwitterButton, -141, SpringLayout.EAST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, chatText, 6, SpringLayout.SOUTH, chatArea);
-		baseLayout.putConstraint(SpringLayout.EAST, chatArea, -10, SpringLayout.EAST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, chatButton, 6, SpringLayout.SOUTH, chatText);
-		baseLayout.putConstraint(SpringLayout.EAST, chatButton, 0, SpringLayout.EAST, chatText);
-		baseLayout.putConstraint(SpringLayout.WEST, chatText, 150, SpringLayout.WEST, this);
+		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);		
 		baseLayout.putConstraint(SpringLayout.NORTH, chatArea, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, chatArea, 10, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, tweetButton, 1, SpringLayout.SOUTH, chatButton);
-		baseLayout.putConstraint(SpringLayout.EAST, tweetButton, -10, SpringLayout.EAST, chatButton);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, -6, SpringLayout.NORTH, chatText);
+		baseLayout.putConstraint(SpringLayout.EAST, chatArea, -10, SpringLayout.EAST, this);		
+		baseLayout.putConstraint(SpringLayout.WEST, chatButton, 0, SpringLayout.WEST, analyzeTwitterButton);
+		baseLayout.putConstraint(SpringLayout.EAST, chatButton, 0, SpringLayout.EAST, analyzeTwitterButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, analyzeTwitterButton, 6, SpringLayout.SOUTH, tweetButton);
+		baseLayout.putConstraint(SpringLayout.WEST, analyzeTwitterButton, 169, SpringLayout.WEST, this);		
+		baseLayout.putConstraint(SpringLayout.NORTH, chatButton, -34, SpringLayout.NORTH, tweetButton);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatButton, -6, SpringLayout.NORTH, tweetButton);
+		baseLayout.putConstraint(SpringLayout.SOUTH, tweetButton, -45, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, tweetButton, 185, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.WEST, chatText, 0, SpringLayout.WEST, chatButton);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatText, -6, SpringLayout.NORTH, chatButton);
+		baseLayout.putConstraint(SpringLayout.EAST, chatText, 0, SpringLayout.EAST, chatButton);
 	}
 	
 	/**
