@@ -2,7 +2,7 @@ package chat.model;
 
 import twitter4j.*;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import chat.controller.ChatController;
 
@@ -26,14 +26,14 @@ public class CtecTwitter
 	{
 		try
 		{
-			chatBotTwitter.updateStatus("Spam ");
+			chatBotTwitter.updateStatus("I have way too much fun with this");
 		}
 		catch(TwitterException error)
 		{
 			baseController.handleErrors(error.getErrorMessage());
 		}
 	}
-//	public String topResults(ArrayList<String> wordList)
+//	public String topResults(List<String> wordList)
 //	{
 //		
 //	}
