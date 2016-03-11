@@ -7,10 +7,13 @@ package chat.view;
 
 // imports required for certain functionality of aspects within the panel class
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.*;
 import java.awt.color.*;
 import java.util.Random;
+
 import javax.swing.*;
+
 import chat.controller.ChatController;
 
 
@@ -27,6 +30,7 @@ public class ChatPanel extends JPanel
 	private JButton tweetButton;
 	private JButton saveButton;
 	private JButton loadButton;
+	private JButton analyzeTwitterButton;
 	
 	
 	public ChatPanel(ChatController baseController)
@@ -39,6 +43,8 @@ public class ChatPanel extends JPanel
 		chatArea = new JTextArea(10, 40);
 		chatArea.setEnabled(false);
 		tweetButton = new JButton("Send a tweet");
+		analyzeTwitterButton = new JButton("Count dem Tweets");
+		
 
 		
 		setupPanel();
@@ -46,6 +52,22 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	}
 
+	private void setupPanel()
+	{
+		//adds all needed components to the panel
+		this.add(chatButton);		
+		this.setLayout(baseLayout);
+		this.add(chatText);
+		this.add(tweetButton);
+		this.setLayout(baseLayout);
+		this.setBackground(Color.BLUE);
+		chatText.setToolTipText("Type here for the chatbot.");
+		chatArea.setEnabled(false);
+		this.add(analyzeTwitterButton);
+		//this.add(testButton);
+		this.add(textPane);
+		//this.add
+	}
 	
 	private void setupListeners()
 	{
@@ -69,36 +91,40 @@ public class ChatPanel extends JPanel
 			}
 		});
 		
+		analyzeTwitterButton.addActionListener(new ActionListener()
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent click) 
+			{
+				String user = chatText.getText();
+				String results = baseController.analyze(user);
+				chatArea.setText(results);
+			}
+			
+			
+		});
+		
 	}
 
 
-	private void setupPanel()
-	{
-		//adds all needed components to the panel
-		this.add(chatButton);		
-		this.setLayout(baseLayout);
-		this.add(chatText);
-		this.add(tweetButton);
-		this.setLayout(baseLayout);
-		this.setBackground(Color.BLUE);
-		chatText.setToolTipText("Type here for the chatbot.");
-		chatArea.setEnabled(false);
-		//this.add(testButton);
-		//this.add(textPane);
-	}
+	
 	
 	private void setupChatPane()
 	{
+		textPane = new JScrollPane(chatArea);
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
 		chatArea.setEditable(false);
-		textPane = new JScrollPane(chatArea);
+		this.setPreferredSize(new Dimension(500, 500));
 		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 	private void setupLayout()
 	{
 		//placing of constraints on the GUI components
+		baseLayout.putConstraint(SpringLayout.NORTH, analyzeTwitterButton, 2, SpringLayout.SOUTH, tweetButton);
+		baseLayout.putConstraint(SpringLayout.EAST, analyzeTwitterButton, -141, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, chatText, 6, SpringLayout.SOUTH, chatArea);
 		baseLayout.putConstraint(SpringLayout.EAST, chatArea, -10, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, chatButton, 6, SpringLayout.SOUTH, chatText);
