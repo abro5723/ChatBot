@@ -40,9 +40,7 @@ public class ChatPanel extends JPanel
 		baseLayout = new SpringLayout();
 		chatButton = new JButton("Start the convo!");
 		chatText = new JTextField("Type yo wurds mayn!");
-		
 		tweetButton = new JButton("Send a tweet");
-
 		analyzeTwitterButton = new JButton("Count dem Tweets");
 
 		

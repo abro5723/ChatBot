@@ -9,6 +9,7 @@ import chat.controller.ChatController;
 public class CtecTwitter
 {
 
+	private static final ArrayList<Status> tweetTexts = null;
 	private ArrayList<Status> statusList;
 	private ArrayList<String> wordList;
 	private Twitter chatBotTwitter;
@@ -34,9 +35,42 @@ public class CtecTwitter
 		}
 	}
 	
-	public void loadTweets(String witterHandle) throws TwitterException
+	public void loadTweets(String twitterHandle) throws TwitterException
+	{
+		Paging statusPage = new Paging(1, 200);
+		int page = 1;
+		while(page <= 10)
+		{
+			statusPage.setPage(page);
+			statusList.addAll(chatBotTwitter.getUserTimeline(twitterHandle, statusPage));
+			page++;
+		}
+		for(Status currentStaus : statusList)
+		{
+			String[] tweetText = currentStaus.getText().split("");
+			for (String word : tweetText);
+			{
+				tweetTexts.add(removePunctuation(word).toLowerCase());
+			}
+		}
+		removeFromCommonEnglishWords(tweetTexts);
+		removeEmptyText();
+	}
+	
+
+	public List removeFromCommonEnglishWords(List<String> wordsList)
+	{
+		return null;
+	}
+	
+	private void removeTwitterUsernamesFromList(List<String>wordsList)
 	{
 		
+	}
+	
+	private String removePunctuation(String currentString)
+	{
+		return null;
 	}
 //	public String topResults(List<String> wordList)
 //	{
