@@ -47,33 +47,51 @@ public class CtecTwitter
 		}
 		for(Status currentStaus : statusList)
 		{
-			String[] tweetText = currentStaus.getText().split("");
-			for (String word : tweetText);
+			String[] tweetText = currentStaus.getText().split(" ");
+			for (String word : tweetText)
 			{
-				tweetTexts.add(removePunctuation(word).toLowerCase());
+				wordList.add(removePunctuation(word).toLowerCase());
 			}
 		}
-		removeFromCommonEnglishWords(tweetTexts);
+		removeFromCommonEnglishWords(wordList);
 		removeEmptyText();
 	}
 	
 
-	public List removeFromCommonEnglishWords(List<String> wordsList)
+	public List removeFromCommonEnglishWords(List<String> wordList)
 	{
-		return null;
+		return wordList;
 	}
 	
-	private void removeTwitterUsernamesFromList(List<String>wordsList)
+	//Runs the punctuation against text
+	private String removeTwitterUsernamesFromList(String currentString)
 	{
+		String punctuation = ".,'?!:;\"(){}^[]<>-";
 		
+		String scrubbedString = "";
+		for(int i = 0; i<currentString.length(); i++)
+		{
+			if(punctuation.indexOf(currentString.charAt(i)) == -1)
+			{
+				scrubbedString += currentString.charAt(i);
+			}
+		}
+		return scrubbedString;
 	}
 	
 	private String removePunctuation(String currentString)
 	{
 		return null;
 	}
-//	public String topResults(List<String> wordList)
-//	{
-//		
-//	}
+	
+	private void removeEmptyText()
+	{
+		
+	}
+	
+	public String topResults(List<String> wordList)
+	{
+		return null;
+	}
+	
 }
