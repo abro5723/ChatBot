@@ -57,16 +57,44 @@ public class CtecTwitter
 		removeEmptyText();
 	}
 	
-
+	@SuppressWarnings("unchecked")
 	public List removeFromCommonEnglishWords(List<String> wordList)
 	{
+		String[] boringWords = importWordsToArray();
+		
+		for(int count = 0; count < wordList.size(); count++)
+		{
+			for(int removeSpot = 0; removeSpot < boringWords.length; removeSpot++)
+			{
+				if(wordList.get(count).equalsIgnoreCase(boringWords[removeSpot]))
+				{
+					wordList.remove(count);
+					count--;
+					removeSpot = boringWords.length;
+				}
+			}
+		}
+		//removeTwitterUsernamesFromList(wordList);
 		return wordList;
 	}
 	
-	//Runs the punctuation against text
-	private String removeTwitterUsernamesFromList(String currentString)
+	private String[] importWordsToArray() 
 	{
-		String punctuation = ".,'?!:;\"(){}^[]<>-";
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	//Runs the punctuation against text
+	private void removeTwitterUsernamesFromList(List<String>wordList)
+	{
+		
+	}
+	
+	private String removePunctuation(String currentString)
+	{
+	
+	
+	String punctuation = ".,'?!:;\"(){}^[]<>-";
 		
 		String scrubbedString = "";
 		for(int i = 0; i<currentString.length(); i++)
@@ -78,17 +106,18 @@ public class CtecTwitter
 		}
 		return scrubbedString;
 	}
-	
-	private String removePunctuation(String currentString)
-	{
-		return null;
-	}
-	
 	private void removeEmptyText()
 	{
-		
+		for (int spot = 0; spot < wordList.size(); spot++)
+		{
+			if(wordList.get(spot).equals(""))
+			{
+				wordList.remove(spot);
+				spot--;
+			}
+		}
 	}
-	
+	//In order to remove value ^ you need to go backwards
 	public String topResults(List<String> wordList)
 	{
 		return null;
