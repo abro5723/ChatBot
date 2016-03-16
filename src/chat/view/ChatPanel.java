@@ -42,7 +42,7 @@ public class ChatPanel extends JPanel
 		chatText = new JTextField("Type yo wurds mayn!");
 		tweetButton = new JButton("Send a tweet");
 		analyzeTwitterButton = new JButton("Count dem Tweets");
-
+		chatArea = new JTextArea(10, 25);
 		
 
 		setupChatPane();
@@ -64,9 +64,9 @@ public class ChatPanel extends JPanel
 		this.add(analyzeTwitterButton);
 		//this.add(testButton);
 		this.add(textPane);
-		chatArea = new JTextArea(10, 40);
+		
 
-		add(chatArea);
+		
 		chatArea.setEnabled(false);
 		chatArea.setEnabled(false);
 		//this.add
@@ -115,7 +115,11 @@ public class ChatPanel extends JPanel
 	
 	private void setupChatPane()
 	{
-		textPane = new JScrollPane();
+		textPane = new JScrollPane(chatArea);
+		baseLayout.putConstraint(SpringLayout.NORTH, textPane, 25, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, textPane, 25, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, textPane, 250, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, textPane, 25, SpringLayout.EAST, this);
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
 		chatArea.setEditable(false);

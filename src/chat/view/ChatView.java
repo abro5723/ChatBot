@@ -21,7 +21,7 @@ public class ChatView
 	public String grabAnswer(String stuff)
 	{
 		String answer = "";
-		answer = JOptionPane.showInputDialog(null,stuff,windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here:)").toString();
+		answer = JOptionPane.showInputDialog(null,stuff,windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here:)")+"";
 		return answer;
 	}
 

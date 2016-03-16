@@ -115,11 +115,10 @@ public class ChatController
 	}
 	public String analyze(String userName)
 	{
-		String userAnalysis = "User " + userName + "has ";
+		String userAnalysis = "User " + userName + "has " + chatTwitter.topResults();
 		
 		return userAnalysis;
-				
-				
+		
 	}
 	
 }

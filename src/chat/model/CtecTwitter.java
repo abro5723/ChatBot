@@ -156,7 +156,7 @@ public class CtecTwitter
 		}
 	}
 	//In order to remove value ^ you need to go backwards
-	public String topResults(List<String> wordList)
+	public String topResults()
 	{
 		String tweetResults = "";
 		int topWordLocation = 0;
@@ -164,8 +164,9 @@ public class CtecTwitter
 		
 		for(int index = 0; index < wordList.size(); index++)
 		{
-			int wordUseCount = 0;
-			for(int spot = 0; spot < wordList.size(); spot++)
+			int wordUseCount = 1;
+			
+			for(int spot = index + 1; spot < wordList.size(); spot++)
 			{
 				if(wordList.get(index).equals(wordList.get(spot)))
 				{
