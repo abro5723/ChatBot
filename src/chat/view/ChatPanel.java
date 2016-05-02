@@ -103,6 +103,7 @@ public class ChatPanel extends JPanel
 				String user = chatText.getText();
 				String results = baseController.analyze(user);
 				chatArea.setText(results);
+				//String results = baseController.investigation(user);
 			}
 			
 			
@@ -116,10 +117,10 @@ public class ChatPanel extends JPanel
 	private void setupChatPane()
 	{
 		textPane = new JScrollPane(chatArea);
-		baseLayout.putConstraint(SpringLayout.NORTH, textPane, 25, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, textPane, 24, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, textPane, 25, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, textPane, 250, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, textPane, 25, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.EAST, textPane, -21, SpringLayout.EAST, this);
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
 		chatArea.setEditable(false);
